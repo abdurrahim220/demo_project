@@ -57,11 +57,9 @@ const Header = () => {
                 </a>
               ))}
             </ul>
-            {/* <div className="flex justify-center items-center bg-blue-400 rounded-md px-4 gap-1 text-white">
-            <FaRegUser /> Props
-            </div> */}
+            
 
-            {/* menu btn for only mobile device */}
+           
             <div className="lg:hidden">
               <button
                 onClick={toggleMenu}

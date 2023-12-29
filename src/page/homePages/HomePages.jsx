@@ -10,8 +10,7 @@ const HomePages = () => {
     setShowPcard(!showPcard);
   };
 
-  const [cart,setCart]=useState()
-
+  const [cart, setCart] = useState();
 
   return (
     <div className="max-w-7xl mx-auto my-10 px-5 lg:px-2">
@@ -29,7 +28,7 @@ const HomePages = () => {
       <div className="space-y-2 ">
         <h1>Extras disponibles</h1>
 
-        <div className="flex gap-10">
+        <div className="lg:flex gap-10">
           <div className="relative">
             {data.map((item) => (
               <Card onClick={handleCardClick} item={item} key={item._id} />

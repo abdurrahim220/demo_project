@@ -6,11 +6,9 @@ const Card = ({ onClick, item }) => {
   const [quantity, setQuantity] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
-  // Load data from local storage on component mount
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem("cartData")) || [];
 
-    // Check if the saved data is an array or an object
     const savedItem = Array.isArray(savedData)
       ? savedData.find((cartItem) => cartItem.id === id)
       : savedData[id];
@@ -33,28 +31,22 @@ const Card = ({ onClick, item }) => {
   };
 
   const updateLocalStorage = (updatedQuantity) => {
-    // Retrieve existing data from local storage
     const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
 
-    // Check if the saved data is an array or an object
     const itemIndex = Array.isArray(cartData)
       ? cartData.findIndex((cartItem) => cartItem.id === id)
       : id;
 
     if (itemIndex !== -1) {
-      // If the item is already in the array, update its quantity
       if (Array.isArray(cartData)) {
         cartData[itemIndex].quantity = updatedQuantity;
       } else {
-        // If the saved data is an object, update the quantity for the specific item
         cartData[id].quantity = updatedQuantity;
       }
     } else {
-      // If the item is not in the array, add it
       cartData.push({ ...item, quantity: updatedQuantity });
     }
 
-    // Save the updated data to local storage
     localStorage.setItem("cartData", JSON.stringify(cartData));
   };
 
@@ -63,7 +55,7 @@ const Card = ({ onClick, item }) => {
   };
 
   return (
-    <div className={`lg:flex ${isActive ? "flex-col" : ""} mb-3 gap-10`}>
+    <div className={`flex ${isActive ? "flex-col" : "flex"} mb-3 gap-10`}>
       <button
         onClick={() => {
           onClick();
